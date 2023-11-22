@@ -2,29 +2,30 @@ const playerOne = document.querySelector(".player-one h2");
 const playerTwo = document.querySelector(".player-two h2")
 const inputs = document.querySelectorAll(".gameboard div");
 const resultHeader = document.querySelector(".winner");
+const resetButton = document.querySelector(".reset");
 
-function setPlayerOne(name) {
-  playerOne.textContent = name;
+function setPlayerOne(name, symbol) {
+  playerOne.textContent = `${name}: ${symbol}`;
 }
 
-function setPlayerTwo(name) {
-  playerTwo.textContent = name;
+function setPlayerTwo(name, symbol) {
+  playerTwo.textContent = `${name}: ${symbol}`;
 }
 
 const playerOneObj = {
-  name: "Jugador Uno",
+  name: "Player 1",
   win: 3,
   symbol: "X",
 };
 
 const playerTwoObj = {
-  name: "Jugador Dos",
+  name: "Player 2",
   win: 27,
   symbol: "O",
 };
 
-setPlayerOne(playerOneObj.name);
-setPlayerTwo(playerTwoObj.name);
+setPlayerOne(playerOneObj.name, playerOneObj.symbol);
+setPlayerTwo(playerTwoObj.name, playerTwoObj.symbol);
 
 let gameboard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -107,8 +108,10 @@ function setStyle(index, value) {
   const input = document.querySelector(`.gameboard :nth-child(${index + 1})`);
   if (value === 1) {
     input.textContent = playerOneObj.symbol;
+    input.classList.add("color-one");
   } else {
     input.textContent = playerTwoObj.symbol;
+    input.classList.add("color-two");
   }
 }
 
@@ -140,4 +143,17 @@ inputs.forEach((element) => {
     console.log(gameboard);
     setTurnValue();
   });
+});
+
+resetButton.addEventListener("click", () => {
+  game = true;
+  turnValue = 1;
+  totalTurns = 0;
+  gameboard = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+  inputs.forEach((input) => {
+    input.classList.remove("color-one");
+    input.classList.remove("color-two");
+    input.textContent = "";
+  });
+  console.log(gameboard);
 });

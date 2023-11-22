@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="./main.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <title>Tic Tac Toe!</title>
 </head>
@@ -16,17 +19,15 @@
 
   <main>
     <div class="controls">
-      <button class="controls-reset">Reset</button>
       <div class="players">
         <div class="player-one">
           <h2>Player 1</h2>
-          <button class="btn-name">Editar</button>
+          <!-- <button class="btn-name">Editar</button> -->
         </div>
         <div class="player-two">
           <h2>Player 1</h2>
-          <button class="btn-name">Editar</button>
+          <!-- <button class="btn-name">Editar</button> -->
         </div>
-        <h2 class="winner"></h2>
       </div>
     </div>
     <div class="gameboard">
@@ -39,6 +40,10 @@
       <div class="six"></div>
       <div class="seven"></div>
       <div class="eight"></div>
+    </div>
+    <div class="reset-result">
+      <h2 class="winner"></h2>
+      <button class="reset">Reset</button>
     </div>
   </main>
 
