@@ -1,6 +1,7 @@
 const playerOne = document.querySelector(".player-one h2");
 const playerTwo = document.querySelector(".player-two h2")
 const inputs = document.querySelectorAll(".gameboard div");
+const resultHeader = document.querySelector(".winner");
 
 function setPlayerOne(name) {
   playerOne.textContent = name;
@@ -13,11 +14,13 @@ function setPlayerTwo(name) {
 const playerOneObj = {
   name: "Jugador Uno",
   win: 3,
+  symbol: "X",
 };
 
 const playerTwoObj = {
   name: "Jugador Dos",
   win: 27,
+  symbol: "O",
 };
 
 setPlayerOne(playerOneObj.name);
@@ -92,18 +95,35 @@ function checkDiagonals() {
   }
 }
 
+function setResult(result) {
+  if (result) {
+    resultHeader.textContent = `The winner is ${result}`;
+  } else {
+    resultHeader.textContent = "There is no winner.";
+  }
+}
+
+function setStyle(index, value) {
+  const input = document.querySelector(`.gameboard :nth-child(${index + 1})`);
+  if (value === 1) {
+    input.textContent = playerOneObj.symbol;
+  } else {
+    input.textContent = playerTwoObj.symbol;
+  }
+}
+
 function checkWin() {
   if (checkHorizontals() || checkVerticals() || checkDiagonals()) {
     if (turnValue === 1) {
-      console.log(`${playerOneObj.name} is the winner.`)
+      setResult(playerOneObj.name);
     } else {
-      console.log(`${playerTwoObj.name} is the winner`)
+      setResult(playerTwoObj.name);
     }
     game = false;
   } else {
     totalTurns++;
     if (totalTurns === 9) {
-      console.log("It's a tie.");
+      setResult(false);
       game = false;
     }
   }
@@ -114,6 +134,7 @@ inputs.forEach((element) => {
     const inputIndex = checkIndex(element.className);
     if (checkEmpty(inputIndex) && game) {
       setBoard(inputIndex, turnValue);
+      setStyle(inputIndex, turnValue);
       checkWin();
     }
     console.log(gameboard);
