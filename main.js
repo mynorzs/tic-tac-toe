@@ -155,5 +155,5 @@ resetButton.addEventListener("click", () => {
     input.classList.remove("color-two");
     input.textContent = "";
   });
-  console.log(gameboard);
+  resultHeader.textContent = "";
 });
