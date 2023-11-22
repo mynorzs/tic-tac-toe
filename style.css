@@ -1,0 +1,9 @@
+.gameboard {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, 100px);
+}
+
+.gameboard div {
+  background-color: grey;
+  border: 1px solid #000000;
+}
